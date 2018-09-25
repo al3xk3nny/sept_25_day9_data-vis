@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- D3 script CDN
+-------------------- -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+
+    <title>D3</title>
+</head>
+
+<body>
+    <h1>D3 and SVG</h1>
+    <div id="svg-goes-here"></div>
+    <script>
+        let data = [40, 50, 10, 30, 20];
+        let w = 50 + (data.length * 100);
+        let h = 200;
+
+        let svg = d3.select("#svg-goes-here") //The 'd3.select' is similar to the $ in jQuery. 
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h)
+
+        svg.selectAll("circle") //setting up a circle template
+            .data(data) //binds that data to the circle
+            .enter() //enters an array
+            .append("circle") //and append a circle for each element in the array
+            .attr("cx", function(d, i) { //also written as .attr ("center of 'x'", function(data set/point in array, index number in array) {"
+                return 50 + (i * 100);
+            })
+            .attr("cy", h / 2) //'center of y' is half the height
+            .attr("r", function(d) { //Radius is equal to the current data set/point
+                return d;
+            });
+    </script>
+
+</body>
+
+</html>
+
+</html>
