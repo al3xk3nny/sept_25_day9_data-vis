@@ -21,10 +21,11 @@ function makeCharts(error, transactionsData) {
         .height(150)
         .dimension(nameDim)
         .group(totalSpendPerPerson)
+        .elasticY(true) //Allows the graph to react to interactions. In this case the yAxis reacts.
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .xAxisLabel("Person")
-        .yAxis().ticks(4)
+        .yAxis().ticks(8)
 
 
     //Spend by store chart.    
@@ -39,10 +40,11 @@ function makeCharts(error, transactionsData) {
         .height(150)
         .dimension(storeDim)
         .group(totalSpendPerStore)
+        .elasticY(true) //Allows the graph to react to interactions. In this case the yAxis reacts.
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .xAxisLabel("Store")
-        .yAxis().ticks(4)
+        .yAxis().ticks(8)
 
 
     //Spend by state chart.    
@@ -57,10 +59,12 @@ function makeCharts(error, transactionsData) {
         .height(150)
         .dimension(stateDim)
         .group(totalSpendPerState)
+        .transitionDuration(1500) //changes the duration the chart takes to transition when loaded or interacted with. Don't put after 'yAxis'. Always have 'yAxis' last.
+        .elasticY(true) //Allows the graph to react to interactions. In this case the yAxis reacts.
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .xAxisLabel("State")
-        .yAxis().ticks(4)
+        .yAxis().ticks(8)
 
 
     dc.renderAll();
